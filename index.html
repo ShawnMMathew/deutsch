@@ -1,318 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#1f3a5f">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F6F4EF">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg">
 <title>Deutsch für Ingenieure</title>
 <style>
-:root{--bg:#0f1b2d;--card:#1b2b45;--tx:#eef3fa;--mut:#9fb0c8;--ac:#ffcc00;--ok:#3ecf8e;--no:#ff6b6b}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--tx);font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;padding-bottom:76px}
-#app{max-width:640px;margin:auto;padding:14px}
-.card{background:var(--card);border-radius:14px;padding:16px;margin:12px 0}
-button{font:inherit;border:0;border-radius:10px;padding:12px 14px;background:#2b4166;color:var(--tx);cursor:pointer}
-button.p{background:var(--ac);color:#111;font-weight:700}
-.row{display:flex;gap:8px;flex-wrap:wrap}
-.row>button{flex:1}
-nav{position:fixed;bottom:0;left:0;right:0;display:flex;background:#0a1322;border-top:1px solid #243857}
-nav button{flex:1;border-radius:0;background:none;padding:10px 2px;font-size:12px;color:var(--mut)}
-nav button.on{color:var(--ac)}
-h1{font-size:21px;margin:8px 0}h2{font-size:17px;margin:6px 0}
-.big{font-size:26px;font-weight:700;margin:8px 0}
-.mut{color:var(--mut);font-size:14px}
-.opt{display:block;width:100%;text-align:left;margin:7px 0}
-.opt.ok{background:#1d6b4a}.opt.no{background:#7a2b2b}
-.bar{height:8px;background:#243857;border-radius:6px;overflow:hidden;margin:8px 0}
-.bar i{display:block;height:100%;background:var(--ac)}
-textarea{width:100%;padding:12px;border-radius:10px;border:1px solid #38527d;background:#0f1b2d;color:var(--tx);font:inherit;margin:8px 0}
-.g{color:var(--ok)}.r{color:var(--no)}
-hr{border:0;border-top:1px solid #38527d;margin:12px 0}
-details{margin:8px 0}summary{cursor:pointer;padding:8px 0}
-.li{padding:6px 0;border-bottom:1px solid #243857;font-size:15px}
-.li button{padding:4px 10px;margin-left:6px}
+:root{--bg:#F6F4EF;--sf:#FFFFFF;--sf2:#EFECE5;--tx:#1E2329;--mu:#5F6773;--ln:#E2DED5;--pr:#0072B2;--on-pr:#FFFFFF;--ac:#E69F00;--ok:#009E73;--no:#D55E00;--sh:0 1px 2px rgba(30,35,41,.05),0 6px 18px rgba(30,35,41,.05);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#12161C;--sf:#1A2028;--sf2:#242C36;--tx:#E7EAEE;--mu:#9AA4B2;--ln:#2B3440;--pr:#56B4E9;--on-pr:#0B1A26;--ok:#3CC79A;--no:#F08A4B;--sh:none;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#12161C;--sf:#1A2028;--sf2:#242C36;--tx:#E7EAEE;--mu:#9AA4B2;--ln:#2B3440;--pr:#56B4E9;--on-pr:#0B1A26;--ok:#3CC79A;--no:#F08A4B;--sh:none;color-scheme:dark}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;background:var(--bg);color:var(--tx)}
+body{font:17px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-bottom:calc(84px + env(safe-area-inset-bottom))}
+#app{max-width:600px;margin:auto;padding:20px 16px}
+h1{font-size:26px;line-height:1.2;margin:4px 0;font-weight:700;letter-spacing:-.01em}
+h2{font-size:18px;margin:0 0 8px;font-weight:650}
+p{margin:10px 0}
+.mu{color:var(--mu);font-size:15px}.sm{font-size:13px}
+.card{background:var(--sf);border:1px solid var(--ln);border-radius:18px;padding:18px;margin:14px 0;box-shadow:var(--sh)}
+.btn{font:inherit;font-weight:600;min-height:48px;padding:12px 16px;border-radius:14px;border:1px solid var(--ln);background:var(--sf2);color:var(--tx);cursor:pointer;transition:transform .08s,background .2s}
+.btn:active{transform:scale(.97)}
+.btn.pr{background:var(--pr);color:var(--on-pr);border-color:transparent}
+.btn.ghost{background:transparent;border-color:transparent;color:var(--mu)}
+.btn.full{width:100%;margin-top:8px}
+.row{display:flex;gap:8px;flex-wrap:wrap}.row>.btn{flex:1}
+.top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.ico{display:inline-grid;place-items:center;width:40px;height:40px;border-radius:12px;border:1px solid var(--ln);background:var(--sf2);color:var(--pr);cursor:pointer;vertical-align:middle;padding:0;flex:none}
+.ico svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+nav{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--sf);border-top:1px solid var(--ln);padding-bottom:env(safe-area-inset-bottom);z-index:5}
+nav button{flex:1;background:none;border:0;color:var(--mu);font:600 11px system-ui,sans-serif;padding:9px 0 10px;display:flex;flex-direction:column;align-items:center;gap:3px;cursor:pointer}
+nav svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav button.on{color:var(--pr)}
+.chip{display:inline-block;font-size:12px;font-weight:600;padding:4px 11px;border-radius:999px;background:var(--sf2);color:var(--mu);cursor:pointer}
+.chip.on{background:var(--pr);color:var(--on-pr)}
+.big{font-size:28px;font-weight:700;line-height:1.25;margin:12px 0;letter-spacing:-.01em}
+.mid{font-size:20px;font-weight:600;line-height:1.4}
+.en{color:var(--mu);font-style:italic}
+.hr{height:1px;background:var(--ln);margin:16px 0}
+.bar{height:6px;background:var(--sf2);border-radius:99px;overflow:hidden;margin:8px 0 4px}
+.bar i{display:block;height:100%;background:var(--pr);border-radius:99px;transition:width .35s ease}
+.opt{display:flex;align-items:center;gap:8px;width:100%;text-align:left;margin:8px 0;font-weight:500}
+.opt.ok{background:color-mix(in srgb,var(--ok) 16%,var(--sf));border-color:var(--ok)}
+.opt.no{background:color-mix(in srgb,var(--no) 16%,var(--sf));border-color:var(--no)}
+.task{display:flex;align-items:center;gap:14px;padding:14px 2px;border-bottom:1px solid var(--ln);cursor:pointer}
+.task:last-child{border-bottom:0}.task .t{flex:1}
+.chk{width:28px;height:28px;border-radius:50%;border:2px solid var(--ln);display:grid;place-items:center;flex:none;color:#fff;font-size:15px;font-weight:700}
+.chk.done{background:var(--ok);border-color:var(--ok)}
+.hero{display:flex;align-items:center;gap:20px}
+.ring{position:relative;width:104px;height:104px;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring .c{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-weight:700;font-size:24px;line-height:1.1}
+.stat{margin:5px 0}.stat b{font-size:20px}
+.flash{cursor:pointer;min-height:230px;display:flex;flex-direction:column;justify-content:center}
+.flash>.chip{align-self:flex-start}
+.rate{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.rate .btn{padding:8px 4px;display:flex;flex-direction:column;align-items:center;font-size:15px}
+.rate small{font-weight:500;font-size:12px;opacity:.75}
+input,textarea{width:100%;font:inherit;padding:12px 14px;border-radius:12px;border:1px solid var(--ln);background:var(--bg);color:var(--tx);margin:5px 0}
+input:focus,textarea:focus{outline:2px solid var(--pr);border-color:transparent}
+.g{color:var(--ok);font-weight:600}
+.r{color:var(--no);border-bottom:2px dotted var(--no)}
+details{border-top:1px solid var(--ln)}
+summary{cursor:pointer;padding:13px 0;font-weight:600}
+.li{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--ln)}.li .t{flex:1}
+.heat{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;grid-auto-columns:1fr;gap:4px;margin:12px 0 6px}
+.heat i{aspect-ratio:1;border-radius:4px;background:var(--sf2)}
+.heat i.l1{background:color-mix(in srgb,var(--pr) 30%,var(--sf2))}
+.heat i.l2{background:color-mix(in srgb,var(--pr) 50%,var(--sf2))}
+.heat i.l3{background:color-mix(in srgb,var(--pr) 75%,var(--sf2))}
+.heat i.l4{background:var(--pr)}
+.fade{animation:fade .25s ease}
+@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.pop{animation:pop .5s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{0%{transform:scale(.7);opacity:0}100%{transform:scale(1);opacity:1}}
+.confetti{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:9}
+.confetti i{position:absolute;top:-14px;width:8px;height:14px;border-radius:2px;animation:fall 2.4s ease-in forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(600deg)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
 <div id="app"></div>
 <nav id="nav"></nav>
+<script src="data.js"></script>
 <script>
-/* ================= DATA ================= */
-const VOCAB=[
-// deck, German (with article/plural), English, example sentence
-["Arbeit","die Bewerbung, -en","application","Ich schicke meine Bewerbung heute ab."],
-["Arbeit","der Lebenslauf, ¨e","CV, résumé","Mein Lebenslauf ist auf dem neuesten Stand."],
-["Arbeit","das Anschreiben, -","cover letter","Im Anschreiben erkläre ich meine Motivation."],
-["Arbeit","der Werkstudent, -en","working student","Ich suche eine Stelle als Werkstudent in der Entwicklung."],
-["Arbeit","das Praktikum, Praktika","internship","Mein Praktikum dauert sechs Monate."],
-["Arbeit","die Abschlussarbeit, -en","thesis","Ich möchte meine Abschlussarbeit in einem Unternehmen schreiben."],
-["Arbeit","das Vorstellungsgespräch, -e","job interview","Nächste Woche habe ich ein Vorstellungsgespräch."],
-["Arbeit","die Stelle, -n","position, job","Die Stelle ist ab sofort zu besetzen."],
-["Arbeit","die Kenntnisse (Pl.)","skills, knowledge","Ich habe gute CAD-Kenntnisse."],
-["Arbeit","die Erfahrung, -en","experience","Ich habe Erfahrung mit FEM-Simulationen."],
-["Arbeit","der Vorgesetzte, -n","supervisor, boss","Mein Vorgesetzter hat die Aufgabe verteilt."],
-["Arbeit","die Besprechung, -en","meeting","Die Besprechung beginnt um neun Uhr."],
-["Arbeit","der Termin, -e","appointment, deadline","Wir müssen den Termin einhalten."],
-["Arbeit","die Frist, -en","deadline (time limit)","Die Frist läuft am Freitag ab."],
-["Arbeit","zuständig sein für","to be responsible for","Wer ist für die Qualitätsprüfung zuständig?"],
-["Arbeit","die Aufgabe, -n","task","Meine Aufgabe ist die Auswertung der Messdaten."],
-["Arbeit","der Arbeitsvertrag, ¨e","employment contract","Ich habe den Arbeitsvertrag gestern unterschrieben."],
-["Arbeit","das Gehalt, ¨er","salary","Das Gehalt wird am Monatsende überwiesen."],
-["Arbeit","sich bewerben um","to apply for","Ich bewerbe mich um eine Werkstudentenstelle."],
-["Arbeit","die Rückmeldung, -en","feedback, reply","Ich warte noch auf eine Rückmeldung."],
-["Arbeit","der Ansprechpartner, -","contact person","Wer ist mein Ansprechpartner für dieses Thema?"],
-["Arbeit","die Unterlagen (Pl.)","documents","Bitte schicken Sie uns Ihre vollständigen Unterlagen."],
-["Arbeit","sich einarbeiten","to get up to speed","In den ersten Wochen arbeite ich mich in das Thema ein."],
-["Arbeit","verschieben","to postpone","Können wir den Termin auf Montag verschieben?"],
-["Technik","der Werkstoff, -e","material","Stahl ist ein häufig verwendeter Werkstoff."],
-["Technik","die Festigkeit, -en","strength","Die Festigkeit des Materials wird im Zugversuch geprüft."],
-["Technik","die Belastung, -en","load","Das Bauteil hält dieser Belastung nicht stand."],
-["Technik","die Spannung, -en","stress; voltage","Die maximale Spannung liegt im Bereich der Kerbe."],
-["Technik","die Verformung, -en","deformation","Die Verformung bleibt unter einem Millimeter."],
-["Technik","der Wirkungsgrad, -e","efficiency","Der Wirkungsgrad des Getriebes liegt bei 95 Prozent."],
-["Technik","die Zeichnung, -en","drawing","Die Maße stehen in der technischen Zeichnung."],
-["Technik","das Bauteil, -e","component, part","Das Bauteil wird aus Aluminium gefertigt."],
-["Technik","die Baugruppe, -n","assembly","Die Baugruppe besteht aus zehn Einzelteilen."],
-["Technik","die Toleranz, -en","tolerance","Die Toleranz beträgt plus minus 0,1 Millimeter."],
-["Technik","die Fertigung","manufacturing, production","Die Fertigung läuft im Dreischichtbetrieb."],
-["Technik","das Fertigungsverfahren, -","manufacturing process","Welches Fertigungsverfahren eignet sich für diese Serie?"],
-["Technik","fräsen","to mill","Die Nut wird auf der CNC-Maschine gefräst."],
-["Technik","drehen","to turn (lathe)","Die Welle wird auf der Drehmaschine gedreht."],
-["Technik","schweißen","to weld","Die beiden Bleche werden miteinander verschweißt."],
-["Technik","die Schraube, -n","screw, bolt","Die Schrauben müssen mit 20 Newtonmeter angezogen werden."],
-["Technik","die Welle, -n","shaft","Die Welle überträgt das Drehmoment vom Motor auf das Zahnrad."],
-["Technik","das Lager, -","bearing","Das Lager muss regelmäßig geschmiert werden."],
-["Technik","das Zahnrad, ¨er","gear","Das Zahnrad hat vierzig Zähne."],
-["Technik","das Drehmoment, -e","torque","Das maximale Drehmoment beträgt 200 Newtonmeter."],
-["Technik","die Konstruktion, -en","design, construction","Die Konstruktion muss leichter werden."],
-["Technik","konstruieren","to design (engineer)","Wir konstruieren ein neues Gehäuse."],
-["Technik","die Berechnung, -en","calculation","Die Berechnung basiert auf der Finite-Elemente-Methode."],
-["Technik","das Netz, -e","mesh (FEM); net","Das Netz muss im Bereich der Kerbe feiner werden."],
-["Technik","der Prüfstand, ¨e","test bench","Der Motor läuft seit Stunden auf dem Prüfstand."],
-["Technik","die Qualitätssicherung","quality assurance","Die Qualitätssicherung prüft jedes zehnte Teil."],
-["Technik","das Lastenheft, -e","requirements spec (from customer)","Alle Anforderungen stehen im Lastenheft."],
-["Technik","die Abweichung, -en","deviation","Die Abweichung liegt außerhalb der Toleranz."],
-["Technik","der Fehler, -","error, defect","Der Fehler wurde bei der Endkontrolle entdeckt."],
-["Technik","die Maßnahme, -n","measure, action","Welche Maßnahmen schlagen Sie vor?"],
-["Technik","die Wärmeübertragung","heat transfer","Bei der Wärmeübertragung spielt die Oberfläche eine große Rolle."],
-["Alltag","die Anmeldung, -en","registration","Die Anmeldung beim Bürgeramt ist Pflicht."],
-["Alltag","die Aufenthaltserlaubnis, -se","residence permit","Meine Aufenthaltserlaubnis läuft im Oktober ab."],
-["Alltag","die Ausländerbehörde, -n","immigration office","Ich habe morgen einen Termin bei der Ausländerbehörde."],
-["Alltag","einen Termin vereinbaren","to make an appointment","Ich möchte gern einen Termin vereinbaren."],
-["Alltag","die Krankenversicherung, -en","health insurance","Die Krankenversicherung übernimmt die Kosten."],
-["Alltag","die Überweisung, -en","bank transfer; referral","Die Überweisung kommt in zwei Tagen an."],
-["Alltag","die Miete, -n","rent","Die Miete beträgt 450 Euro warm."],
-["Alltag","die Nebenkosten (Pl.)","additional costs, utilities","Sind die Nebenkosten in der Miete enthalten?"],
-["Alltag","die Kaution, -en","deposit","Die Kaution bekomme ich beim Auszug zurück."],
-["Alltag","der Vermieter, -","landlord","Der Vermieter hat die Heizung reparieren lassen."],
-["Alltag","die Verspätung, -en","delay","Der Zug hat zehn Minuten Verspätung."],
-["Alltag","das Gleis, -e","platform, track","Der ICE fährt auf Gleis sieben ein."],
-["Alltag","die Kündigung, -en","termination (notice)","Die Kündigungsfrist beträgt drei Monate."],
-["Alltag","das Formular, -e","form","Bitte füllen Sie dieses Formular aus."],
-["Alltag","beantragen","to apply for (officially)","Ich möchte eine Verlängerung beantragen."],
-["Alltag","die Bescheinigung, -en","certificate, confirmation","Ich brauche eine Bescheinigung von der Uni."],
-["Alltag","die Krankmeldung, -en","sick note","Ich schicke Ihnen die Krankmeldung per E-Mail."],
-["Alltag","der Beitrag, ¨e","fee, contribution","Der Semesterbeitrag muss bis Ende des Monats bezahlt werden."]
-];
-
-// q = sentence with ___, o = options (first one is correct), e = explanation
-const GRAM=[
-{q:"Die Bauteile ___ in der Halle gefertigt.",o:["werden","wird","sind","haben"],e:"Passiv Präsens = werden + Partizip II. 'Bauteile' is plural → werden."},
-{q:"Das Werkstück ___ gestern geprüft.",o:["wurde","wird","war","hat"],e:"Passiv Präteritum = wurde + Partizip II. Very common in reports."},
-{q:"Der Bericht muss bis Freitag ___ werden.",o:["fertiggestellt","fertigstellen","fertigzustellen","fertigstellte"],e:"Passiv with modal verb: muss + Partizip II + werden."},
-{q:"Wenn ich mehr Zeit ___, würde ich öfter üben.",o:["hätte","habe","hatte","hätten"],e:"Unreal condition → Konjunktiv II: ich hätte."},
-{q:"___ Sie mir bitte die Zeichnung schicken?",o:["Könnten","Konnten","Kannten","Gekonnt"],e:"Konjunktiv II (könnten) makes requests polite. Essential at work."},
-{q:"Das ist der Ingenieur, ___ das Projekt leitet.",o:["der","den","dem","dessen"],e:"The relative pronoun is the subject of 'leitet' → nominative masculine: der."},
-{q:"Die Maschine, ___ wir gestern gekauft haben, ist sehr schnell.",o:["die","der","den","deren"],e:"Feminine + accusative object of 'gekauft' → die. The verb goes to the end of the relative clause."},
-{q:"Das Unternehmen, bei ___ ich mich beworben habe, sitzt in München.",o:["dem","das","den","dessen"],e:"'bei' + Dativ; Unternehmen is neuter → bei dem."},
-{q:"Ich lerne Deutsch, weil ich in Deutschland ___.",o:["arbeiten möchte","möchte arbeiten","arbeiten möchte ich","möchte ich arbeiten"],e:"After 'weil' the conjugated verb goes to the very end."},
-{q:"Ich komme später, ___ der Zug Verspätung hat.",o:["weil","denn","deshalb","sondern"],e:"Verb at the end ('hat') → 'weil'. 'denn' would be followed by normal word order."},
-{q:"Der Zug hat Verspätung, ___ komme ich später.",o:["deshalb","weil","obwohl","damit"],e:"'deshalb' is an adverb in position 1, so the verb follows directly: deshalb komme ich."},
-{q:"___ ich Kopfschmerzen hatte, bin ich zur Arbeit gegangen.",o:["Obwohl","Weil","Damit","Deshalb"],e:"'obwohl' = although (contrast)."},
-{q:"Ich schreibe eine E-Mail, ___ der Kunde die Informationen bekommt.",o:["damit","um","weil","dass"],e:"'damit' = so that, used when the subjects differ (ich / der Kunde)."},
-{q:"Ich nutze die App, ___ mein Deutsch zu verbessern.",o:["um","damit","für","weil"],e:"Same subject (ich) → um … zu + Infinitiv."},
-{q:"Ich interessiere mich ___ Regelungstechnik.",o:["für","an","über","auf"],e:"sich interessieren für + Akkusativ."},
-{q:"Ich freue mich ___ das Vorstellungsgespräch.",o:["auf","über","für","an"],e:"sich freuen auf = look forward to (future). sich freuen über = be happy about (present/past)."},
-{q:"Wir suchen einen ___ Ingenieur.",o:["erfahrenen","erfahrener","erfahrene","erfahrenes"],e:"Masculine accusative after 'einen' → ending -en."},
-{q:"Sie hat ein sehr ___ Zeugnis.",o:["gutes","guter","gute","guten"],e:"Neuter accusative after 'ein' → ending -es."},
-{q:"Die Dicke ___ Bleches beträgt zwei Millimeter.",o:["des","der","dem","das"],e:"Genitiv masculine/neuter: des + noun ending -(e)s."},
-{q:"___ des hohen Drucks hat der Behälter gehalten.",o:["Trotz","Wegen","Während","Statt"],e:"trotz + Genitiv = despite. 'Wegen' (because of) doesn't fit logically."},
-{q:"Die ___ des Bauteils dauert eine Stunde.",o:["Prüfung","Prüfen","Prüft","Geprüft"],e:"Nominalisierung: prüfen → die Prüfung. Technical German loves nouns (-ung nouns are feminine)."},
-{q:"Das gestern ___ Bauteil ist defekt.",o:["gelieferte","liefernde","lieferte","zu liefernde"],e:"Partizip II as adjective has passive meaning = 'das Bauteil, das gestern geliefert wurde'."},
-{q:"An Ihrer Stelle ___ ich das Angebot annehmen.",o:["würde","werde","wurde","würden"],e:"Advice with Konjunktiv II: würde + Infinitiv."},
-{q:"Ich weiß nicht, ___ er heute kommt.",o:["ob","dass","wenn","als"],e:"'ob' = whether (indirect yes/no question), verb at the end."},
-{q:"___ ich in Indien gelebt habe, habe ich kein Deutsch gesprochen.",o:["Als","Wenn","Wann","Ob"],e:"'als' = one-time event/period in the past; 'wenn' = repeated or present/future."},
-{q:"Ich muss ___ auf die Prüfung vorbereiten.",o:["mich","mir","sich","dich"],e:"sich vorbereiten auf; with 'ich' → mich."},
-{q:"Ich warte auf die Antwort. – Ich warte ___.",o:["darauf","worauf","dafür","daran"],e:"da(r)-compound replaces 'auf + thing': darauf."},
-{q:"Sehr geehrte Frau Schmidt, … Mit ___ Grüßen",o:["freundlichen","freundliche","freundlichem","freundlicher"],e:"Standard formal closing: 'Mit freundlichen Grüßen' (plural dative → -en)."},
-{q:"Die Ergebnisse, ___ Richtigkeit niemand bezweifelt, wurden veröffentlicht.",o:["deren","dessen","die","denen"],e:"Genitive relative pronoun, plural → deren."},
-{q:"Hätte ich das früher gewusst, ___ ich anders entschieden.",o:["hätte","wäre","würde","habe"],e:"Past unreal (Konjunktiv II Vergangenheit): hätte + Partizip II."}
-];
-
-const SPEAK=[
-{t:"Introduce yourself (Vorstellungsgespräch)",sit:"The interviewer says: „Erzählen Sie etwas über sich.“ Introduce yourself: studies, interests, experience.",model:"Guten Tag, mein Name ist Max Mustermann. Ich komme aus Indien und studiere Maschinenbau im Master. Ich interessiere mich besonders für Konstruktion und Simulation. In meinem Studium habe ich mit CAD und FEM gearbeitet. Jetzt möchte ich meine Kenntnisse in der Praxis anwenden.",tips:["Ich komme aus … / Ich studiere …","Ich interessiere mich besonders für …","Ich habe mit … gearbeitet","meine Kenntnisse in der Praxis anwenden"]},
-{t:"Why this company?",sit:"The interviewer asks: „Warum möchten Sie bei uns arbeiten?“",model:"Ich möchte bei Ihnen arbeiten, weil Ihr Unternehmen für innovative Produkte bekannt ist. Außerdem möchte ich praktische Erfahrung in der Entwicklung sammeln und von erfahrenen Kollegen lernen.",tips:["bekannt sein für …","praktische Erfahrung sammeln","von Kollegen lernen","Außerdem …"]},
-{t:"Your German level (honest and positive)",sit:"They ask: „Wie gut ist Ihr Deutsch?“ Be honest, but show you're improving.",model:"Mein Deutsch ist ungefähr auf B1-Niveau, aber ich lerne jeden Tag und verbessere mich schnell. Fachtexte kann ich schon gut lesen. Im Gespräch brauche ich manchmal etwas mehr Zeit, aber ich verstehe das Wichtigste.",tips:["auf B1-Niveau","sich verbessern","Fachtexte lesen","das Wichtigste verstehen"]},
-{t:"Ask someone to repeat (meeting)",sit:"In a team meeting you missed the last sentence. Politely ask to repeat it.",model:"Entschuldigung, könnten Sie das bitte wiederholen? Ich habe den letzten Teil nicht ganz verstanden. Könnten Sie etwas langsamer sprechen?",tips:["Könnten Sie das wiederholen?","nicht ganz verstanden","etwas langsamer"]},
-{t:"Daily stand-up (status update)",sit:"Report to your team: what you did yesterday, what you do today, and one problem.",model:"Gestern habe ich das CAD-Modell fertiggestellt. Heute führe ich die Simulation durch. Im Moment gibt es ein Problem mit dem Netz, aber ich arbeite daran und melde mich, wenn ich die Ergebnisse habe.",tips:["Gestern habe ich … + Partizip II","Heute führe ich … durch","Es gibt ein Problem mit …","Ich arbeite daran"]},
-{t:"Ausländerbehörde appointment",sit:"You're at the immigration office with an appointment. Explain why you came.",model:"Guten Tag, ich habe um zehn Uhr einen Termin. Ich möchte meine Aufenthaltserlaubnis verlängern. Hier sind meine Unterlagen: der Pass, die Immatrikulationsbescheinigung und der Nachweis der Krankenversicherung.",tips:["Ich habe einen Termin um …","verlängern","die Unterlagen","der Nachweis"]},
-{t:"Ask a colleague for help",sit:"You don't understand a tolerance on a drawing. Ask a colleague (informal 'du').",model:"Hast du kurz Zeit? Ich habe eine Frage zu dieser Zeichnung. Ich bin mir nicht sicher, welche Toleranz hier gilt. Kannst du mir das bitte erklären?",tips:["Hast du kurz Zeit?","eine Frage zu …","Ich bin mir nicht sicher, …","Kannst du mir das erklären?"]},
-{t:"Describe a technical component",sit:"Explain how a shaft in a gearbox works (use Passiv).",model:"Die Welle wird durch zwei Lager gehalten. Sie überträgt das Drehmoment vom Motor auf das Zahnrad. Die Lager werden regelmäßig geschmiert, damit die Reibung gering bleibt.",tips:["wird … gehalten (Passiv)","überträgt … auf …","damit die Reibung gering bleibt"]},
-{t:"Problem with the flat (Vermieter)",sit:"Call your landlord: the heating has not worked since yesterday.",model:"Guten Tag, hier spricht Max Mustermann aus der Wohnung drei. Die Heizung funktioniert seit gestern nicht mehr. Könnten Sie bitte jemanden vorbeischicken? Ich bin ab achtzehn Uhr zu Hause.",tips:["seit gestern nicht mehr","Könnten Sie bitte …","vorbeischicken","ab 18 Uhr zu Hause"]},
-{t:"Phone call to a company about a Werkstudent job",sit:"You call a company about a job advert and want to speak to the right person.",model:"Guten Tag, mein Name ist Max Mustermann. Ich rufe wegen der ausgeschriebenen Werkstudentenstelle an. Könnte ich bitte mit der zuständigen Person sprechen? Ich hätte außerdem eine Frage zu den Arbeitszeiten.",tips:["Ich rufe wegen … an","die ausgeschriebene Stelle","die zuständige Person","Ich hätte eine Frage zu …"]}
-];
-
-const PLACE=[
-{l:"A2",q:"Gestern ___ ich ins Kino gegangen.",o:["bin","habe","hat","werde"]},
-{l:"A2",q:"Ich helfe ___ Freund bei den Hausaufgaben.",o:["meinem","meinen","mein","meiner"]},
-{l:"A2",q:"Ich fahre jeden Tag mit ___ Bus zur Uni.",o:["dem","den","der","das"]},
-{l:"A2",q:"Ich möchte morgen ___ Arzt gehen.",o:["zum","zur","zu","in"]},
-{l:"B1",q:"Ich weiß nicht, ob er heute ___.",o:["kommt","kommt er","kommen","kam er"]},
-{l:"B1",q:"Wenn ich Zeit ___, würde ich mehr reisen.",o:["hätte","habe","hatte","hat"]},
-{l:"B1",q:"Das ist das Haus, in ___ ich vor zehn Jahren gewohnt habe.",o:["dem","das","den","dessen"]},
-{l:"B1",q:"Ich ärgere mich ___ den Lärm.",o:["über","für","auf","an"]},
-{l:"B1",q:"Das Auto ___ gerade repariert.",o:["wird","werden","hat","wurden"]},
-{l:"B2",q:"Obwohl er viel gelernt hat, ___.",o:["hat er die Prüfung nicht bestanden","er hat die Prüfung nicht bestanden","die Prüfung nicht bestanden hat er","hat die Prüfung er nicht bestanden"]},
-{l:"B2",q:"Der Antrag muss bis Montag ___ werden.",o:["eingereicht","einreichen","einzureichen","einreicht"]},
-{l:"B2",q:"Er tat so, als ___ er alles verstanden.",o:["hätte","hat","hatte","haben"]},
-{l:"B2",q:"Aufgrund ___ Lieferproblems verzögert sich das Projekt.",o:["des","dem","der","das"]},
-{l:"B2",q:"Das von der Firma ___ Produkt ist sehr erfolgreich.",o:["entwickelte","entwickelnde","entwickelt","zu entwickelnde"]},
-{l:"B2",q:"Die Firma, ___ Produkte weltweit verkauft werden, sitzt in Ulm.",o:["deren","dessen","die","der"]},
-{l:"C1",q:"Hätte ich das früher gewusst, ___ ich anders entschieden.",o:["hätte","wäre","würde","habe"]},
-{l:"C1",q:"Das Projekt ist ___ gescheitert, dass die Kosten explodiert sind.",o:["daran","dadurch","dafür","darauf"]}
-];
-
-/* ================= STATE ================= */
+/* ========== CORE ========== */
 const $=s=>document.querySelector(s);
 const root=$('#app');
-const NEW_LIMIT=8;
 const dayNum=()=>Math.floor((Date.now()-new Date().getTimezoneOffset()*60000)/864e5);
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let S=Object.assign({cards:{},days:{},gram:{},nt:{d:0,n:0},place:null,sp:{}},JSON.parse(localStorage.getItem('dfi')||'{}'));
+const buzz=p=>{try{navigator.vibrate&&navigator.vibrate(p)}catch(e){}};
+const shuffle=a=>{for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;};
+let S=Object.assign({cards:{},days:{},gram:{},nt:{d:0,n:0},place:null,sp:{},custom:[],theme:'auto',nl:8},JSON.parse(localStorage.getItem('dfi')||'{}'));
 const save=()=>localStorage.setItem('dfi',JSON.stringify(S));
-function act(k,n=1){const d=dayNum();S.days[d]=S.days[d]||{};S.days[d][k]=(S.days[d][k]||0)+n;save();}
-function streak(){let d=dayNum(),n=0;const has=x=>{const o=S.days[x];return o&&(o.w||o.g||o.s||o.h)};if(!has(d))d--;while(has(d)){n++;d--;}return n;}
+const today=()=>{const d=dayNum();return S.days[d]=S.days[d]||{};};
+function act(k){const o=today();o[k]=(o[k]||0)+1;save();}
+function mark(k){today()['D'+k]=1;save();}
+const TH={w:10,g:5,s:1,h:3};
+const isDone=(k,d=dayNum())=>{const o=S.days[d];return !!(o&&(o['D'+k]||(o[k]||0)>=TH[k]));};
+const hasAct=d=>{const o=S.days[d];return !!(o&&(o.w||o.g||o.s||o.h));};
+function streak(){let d=dayNum(),n=0;if(!hasAct(d))d--;while(hasAct(d)){n++;d--;}return n;}
 
-const VB={},ORDER=[];
-VOCAB.forEach(r=>{VB[r[1]]={deck:r[0],de:r[1],en:r[2],ex:r[3]};});
-(function(){const by={};VOCAB.forEach(r=>(by[r[0]]=by[r[0]]||[]).push(r[1]));const ks=Object.keys(by);let i=0,more=true;while(more){more=false;ks.forEach(k=>{if(by[k][i]){ORDER.push(by[k][i]);more=true;}});i++;}})();
+/* ========== THEME ========== */
+function applyTheme(){
+  const t=S.theme;
+  if(t==='auto')document.documentElement.removeAttribute('data-theme');else document.documentElement.dataset.theme=t;
+  const dark=t==='dark'||(t==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches);
+  $('meta[name=theme-color]').content=dark?'#12161C':'#F6F4EF';
+}
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',applyTheme);
+function setTheme(t){S.theme=t;save();applyTheme();vMore();}
+
+/* ========== VOCAB INDEX ========== */
+let VB={},ORDER=[];
+function buildVB(){
+  VB={};ORDER=[];
+  S.custom.forEach(c=>{const id='my:'+c.de;VB[id]={id,deck:'Meine',de:c.de,en:c.en,ex:c.ex||'',exen:c.exen||''};ORDER.push(id);});
+  const by={};
+  VOCAB.forEach(r=>{VB[r[1]]={id:r[1],deck:r[0],de:r[1],en:r[2],ex:r[3],exen:r[4]||''};(by[r[0]]=by[r[0]]||[]).push(r[1]);});
+  const ks=Object.keys(by);let i=0,more=true;
+  while(more){more=false;ks.forEach(k=>{if(by[k][i]){ORDER.push(by[k][i]);more=true;}});i++;}
+}
+buildVB();
+const DECKS=()=>[...new Set(Object.values(VB).map(v=>v.deck))];
 const spoken=de=>de.split(',')[0].replace(/\(.*?\)/g,'').trim();
 
-/* ================= SPEECH ================= */
+/* ========== SPEECH ========== */
 let voice=null;
 function pickVoice(){if(!('speechSynthesis' in window))return;const v=speechSynthesis.getVoices().filter(x=>x.lang&&x.lang.toLowerCase().replace('_','-').startsWith('de'));voice=v.find(x=>x.localService)||v[0]||null;}
 if('speechSynthesis' in window){pickVoice();speechSynthesis.onvoiceschanged=pickVoice;}
-function say(t,slow){if(!('speechSynthesis' in window)){alert('Speech not supported on this browser.');return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='de-DE';if(voice)u.voice=voice;u.rate=slow?0.6:0.9;speechSynthesis.speak(u);}
+function say(t,slow){if(!('speechSynthesis' in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='de-DE';if(voice)u.voice=voice;u.rate=slow?0.6:0.9;speechSynthesis.speak(u);}
 document.addEventListener('click',e=>{const b=e.target.closest('[data-say]');if(b)say(b.dataset.say,b.dataset.slow==='1');});
+const SPK='<svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 8.5a5 5 0 0 1 0 7"/></svg>';
+const sayBtn=(t,slow)=>`<button class="ico" data-say="${esc(t)}"${slow?' data-slow="1"':''} aria-label="Play">${slow?'<span style="font-size:16px">🐢</span>':SPK}</button>`;
 
-/* ================= NAV ================= */
-const TABS=[['today','🏠','Heute'],['words','🃏','Wörter'],['gram','✏️','Grammatik'],['speak','🎙','Sprechen'],['more','📊','Mehr']];
+/* ========== NAV ========== */
+const ICONS={today:'<path d="M3 10.5 12 4l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',words:'<rect x="3" y="7" width="13" height="14" rx="2"/><path d="M8 3h11a2 2 0 0 1 2 2v12"/>',gram:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',speak:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',more:'<path d="M5 20V11M11 20V5M17 20v-6M21 20H3"/>'};
+const TABS=[['today','Heute'],['words','Wörter'],['gram','Grammatik'],['speak','Sprechen'],['more','Mehr']];
 let view='today';
 function go(v){view=v;render();window.scrollTo(0,0);}
-function render(){$('#nav').innerHTML=TABS.map(t=>`<button class="${view===t[0]?'on':''}" onclick="go('${t[0]}')">${t[1]}<br>${t[2]}</button>`).join('');({today:vToday,words:vWords,gram:vGram,speak:vSpeak,more:vMore,dict:vDict,place:vPlace})[view]();}
+function render(){
+  const tab={dict:'today',place:'more',done:'today'}[view]||view;
+  $('#nav').innerHTML=TABS.map(([k,l])=>`<button class="${tab===k?'on':''}" onclick="go('${k}')"><svg viewBox="0 0 24 24">${ICONS[k]}</svg>${l}</button>`).join('');
+  ({today:vToday,words:vWords,gram:vGram,speak:vSpeak,more:vMore,dict:vDict,place:vPlace,done:vDone})[view]();
+  root.classList.remove('fade');void root.offsetWidth;root.classList.add('fade');
+}
+function home(){Q=null;G=null;D=null;SP=null;PT=null;flowOn=false;go('today');}
 
-/* ================= TODAY ================= */
-function vToday(){
-  const d=S.days[dayNum()]||{};
-  const nDue=dueList('').length,nNew=newList('').length;
-  const T=(ti,sub,done,btn,fn)=>`<div class="card"><div class="row" style="align-items:center"><div style="flex:3"><b>${done?'✅ ':''}${ti}</b><div class="mut">${sub}</div></div><button class="${done?'':'p'}" onclick="${fn}">${btn}</button></div></div>`;
-  root.innerHTML=`<h1>Guten Tag! 👋</h1><p class="mut">🔥 Streak: ${streak()} day(s) · Goal: 10–20 minutes</p>
-  ${T('🃏 Words',`${nDue} due · ${nNew} new · about 6 min`,(d.w||0)>=10,'Start',"startWords('')")}
-  ${T('✏️ Grammar','5 questions · about 3 min',(d.g||0)>=5,'Start','startGram()')}
-  ${T('🎙 Speaking','1 scenario, out loud · about 5 min',(d.s||0)>=1,'Start','SP=nextSp();go(\'speak\')')}
-  ${T('👂 Dictation','3 sentences · about 3 min',(d.h||0)>=3,'Start','startDict()')}
-  ${S.place?'':`<div class="card"><b>📋 Not tested yet</b><div class="mut">Take the 17-question placement test (5 min) to estimate your level.</div><br><button onclick="startPlace()">Take placement test</button></div>`}
-  <div class="card mut">Tip: always say the German <b>out loud</b>. Understanding is easy, producing is the skill that gets you the job.</div>`;
+/* ========== DAILY FLOW ========== */
+let flowOn=false;
+const TASKS=[
+ {k:'w',ti:'Words',sub:()=>{const n=dueList('').length,m=newList('').length;return n+m?`${n} due · ${m} new · ~6 min`:'All caught up';},run:()=>startWords('')},
+ {k:'g',ti:'Grammar',sub:()=>'5 questions · ~3 min',run:()=>startGram()},
+ {k:'s',ti:'Speaking',sub:()=>`${SPEAK[nextSp()].t} · ~5 min`,run:()=>{SP=nextSp();go('speak');}},
+ {k:'h',ti:'Listening',sub:()=>'3-sentence dictation · ~3 min',run:()=>startDict()}
+];
+function startFlow(){flowOn=true;nextInFlow();}
+function nextInFlow(){Q=null;G=null;D=null;SP=null;const t=TASKS.find(t=>!isDone(t.k));if(!t){flowOn=false;go('done');return;}t.run();}
+function finishBtn(){
+  if(!flowOn)return `<button class="btn pr full" onclick="home()">Done</button>`;
+  const n=TASKS.find(t=>!isDone(t.k));
+  return `<button class="btn pr full" onclick="nextInFlow()">${n?'Continue: '+n.ti+' →':'Finish 🎉'}</button>`;
 }
 
-/* ================= WORDS (SRS) ================= */
+/* ========== TODAY ========== */
+function vToday(){
+  const done=TASKS.filter(t=>isDone(t.k)).length,C=263.89;
+  const h=new Date().getHours(),greet=h<11?'Guten Morgen':h<18?'Guten Tag':'Guten Abend';
+  const date=new Date().toLocaleDateString('de-DE',{weekday:'long',day:'numeric',month:'long'});
+  const learning=Object.keys(S.cards).filter(k=>VB[k]).length;
+  const wod=VOCAB[dayNum()%VOCAB.length];
+  const ring=`<div class="ring"><svg width="104" height="104" viewBox="0 0 104 104"><circle cx="52" cy="52" r="42" fill="none" stroke="var(--sf2)" stroke-width="10"/>${done?`<circle cx="52" cy="52" r="42" fill="none" stroke="${done===4?'var(--ok)':'var(--pr)'}" stroke-width="10" stroke-linecap="round" stroke-dasharray="${C}" stroke-dashoffset="${C*(1-done/4)}"/>`:''}</svg><div class="c"><div>${done}/4<div class="mu sm" style="font-weight:500">Tagesziel</div></div></div></div>`;
+  const main=done<4?`<button class="btn pr full" style="min-height:58px;font-size:18px" onclick="startFlow()">${done?'Continue session':"Start today's session"} →</button>`:`<button class="btn full" onclick="startWords('')">✓ Day complete · extra words</button>`;
+  root.innerHTML=`<div class="mu">${date}</div><h1>${greet}!</h1>
+  <div class="card hero">${ring}<div><div class="stat">🔥 <b>${streak()}</b> day streak</div><div class="stat">🃏 <b>${learning}</b> words learning</div><div class="stat mu">≈ 15 min a day</div></div></div>
+  ${main}
+  <div class="card" style="padding:4px 16px">${TASKS.map((t,i)=>`<div class="task" onclick="flowOn=false;TASKS[${i}].run()"><div class="chk ${isDone(t.k)?'done':''}">${isDone(t.k)?'✓':''}</div><div class="t"><b>${t.ti}</b><div class="mu sm">${esc(t.sub())}</div></div><span class="mu">›</span></div>`).join('')}</div>
+  ${S.place?'':`<div class="card"><h2>📋 Find your level</h2><p class="mu">17 questions, about 5 minutes.</p><button class="btn full" onclick="startPlace()">Take placement test</button></div>`}
+  <div class="card"><div class="mu sm">WORT DES TAGES</div><div class="top" style="margin-top:6px"><div><div class="mid">${esc(wod[1])}</div><div class="mu">${esc(wod[2])}</div></div>${sayBtn(spoken(wod[1]))}</div><p style="margin:12px 0 2px">${esc(wod[3])}</p><p class="en" style="margin:0">${esc(wod[4])}</p></div>`;
+}
+
+function vDone(){
+  const o=today();
+  if(!o.cel){o.cel=1;save();confetti();buzz([15,60,15]);}
+  root.innerHTML=`<div class="card pop" style="text-align:center;padding:34px 20px"><div style="font-size:56px">🎉</div><h1>Tagesziel erreicht!</h1><p class="mu">All four done · 🔥 ${streak()}-day streak</p><p>Small daily sessions beat long irregular ones. Today's is done.</p><button class="btn pr full" onclick="home()">Back to Heute</button><button class="btn ghost full" onclick="startWords('')">Extra words</button></div>`;
+}
+function confetti(){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const box=document.createElement('div');box.className='confetti';
+  const cols=['#0072B2','#E69F00','#009E73','#56B4E9','#D55E00','#F0E442','#CC79A7'];
+  for(let i=0;i<42;i++){const p=document.createElement('i');p.style.left=Math.random()*100+'vw';p.style.background=cols[i%cols.length];p.style.animationDelay=Math.random()*.7+'s';box.appendChild(p);}
+  document.body.appendChild(box);setTimeout(()=>box.remove(),3400);
+}
+
+/* ========== WORDS (SPACED REPETITION) ========== */
 let Q=null,wd='';
-function newAvail(){const t=dayNum();if(S.nt.d!==t)S.nt={d:t,n:0};return Math.max(0,NEW_LIMIT-S.nt.n);}
+function newAvail(){const t=dayNum();if(S.nt.d!==t)S.nt={d:t,n:0};return Math.max(0,(S.nl||8)-S.nt.n);}
 function dueList(deck){const t=dayNum();return Object.keys(S.cards).filter(id=>VB[id]&&S.cards[id].due<=t&&(!deck||VB[id].deck===deck));}
 function newList(deck){return ORDER.filter(id=>!S.cards[id]&&(!deck||VB[id].deck===deck)).slice(0,newAvail());}
-function startWords(deck){
-  const due=dueList(deck).sort(()=>Math.random()-.5).slice(0,25),nw=newList(deck);
-  Q={queue:due.concat(nw),total:due.length+nw.length,show:false,rev:false};
-  flags();go('words');
-}
+function startWords(deck){const due=shuffle(dueList(deck)).slice(0,30),nw=newList(deck);Q={queue:due.concat(nw),n:0,show:false,rev:false};flags();go('words');}
 function flags(){const id=Q.queue[0],st=id&&S.cards[id];Q.rev=!!(st&&st.reps>=1&&Math.random()<0.5);Q.show=false;}
-function showCard(){Q.show=true;vWordsCard();say(spoken(Q.queue[0]));}
+function sched(c,q){
+  c=c||{ease:2.5,int:0,reps:0};let{ease,int,reps}=c;
+  if(q===0)return{ease:Math.max(1.3,ease-.2),int:0,reps:0};
+  if(reps===0)int=q===3?3:1;
+  else if(reps===1)int=q===3?7:q===1?3:5;
+  else int=Math.max(int+1,Math.round(int*ease*(q===1?.7:q===3?1.3:1)));
+  if(q===1)ease=Math.max(1.3,ease-.15);if(q===3)ease+=.15;
+  return{ease,int,reps:reps+1};
+}
+const ivl=n=>n<1?'now':n<30?n+'d':n<365?Math.round(n/30)+'mo':(n/365).toFixed(1)+'y';
+function cardTap(e){if(e.target.closest('[data-say]'))return;if(!Q.show)showCard();}
+function showCard(){Q.show=true;vWordsCard();say(spoken(VB[Q.queue[0]].de));}
 function rateCard(q){
-  const id=Q.queue.shift(),t=dayNum();
-  let c=S.cards[id];
-  if(!c){c=S.cards[id]={ease:2.5,int:0,reps:0,due:t};S.nt.n++;}
-  if(q===0){c.reps=0;c.int=0;c.ease=Math.max(1.3,c.ease-.2);c.due=t;Q.queue.push(id);}
-  else{
-    if(c.reps===0)c.int=q===3?3:1;
-    else if(c.reps===1)c.int=q===3?7:q===1?3:5;
-    else c.int=Math.max(c.int+1,Math.round(c.int*c.ease*(q===1?.7:q===3?1.3:1)));
-    if(q===1)c.ease=Math.max(1.3,c.ease-.15);
-    if(q===3)c.ease+=.15;
-    c.reps++;c.due=t+c.int;
-  }
-  save();act('w');flags();vWordsCard();
+  const id=Q.queue.shift(),old=S.cards[id];
+  if(!old)S.nt.n++;
+  const r=sched(old,q);S.cards[id]={...r,due:dayNum()+r.int};
+  if(q===0)Q.queue.splice(Math.min(3,Q.queue.length),0,id);
+  Q.n++;buzz(q===0?[20,30,20]:10);save();act('w');flags();vWordsCard();
+}
+function vWordsCard(){
+  if(!Q.queue.length){mark('w');root.innerHTML=`<div class="card pop" style="text-align:center;padding:30px 20px"><div style="font-size:48px">✓</div><h1>Words done</h1><p class="mu">${Q.n} reviews. The gaps between reviews are what make words stick, so see you tomorrow.</p>${finishBtn()}</div>`;return;}
+  const id=Q.queue[0],c=VB[id],st=S.cards[id],left=Q.queue.length,pct=Math.round(Q.n/(Q.n+left)*100);
+  const front=Q.rev?`<div class="mu sm" style="margin-top:14px">Say it in German, out loud</div><div class="big">${esc(c.en)}</div>`:`<div class="big">${esc(c.de)}</div><div>${sayBtn(spoken(c.de))}</div>`;
+  const back=Q.show?`<div class="hr"></div>${Q.rev?`<div class="top"><div class="mid">${esc(c.de)}</div>${sayBtn(spoken(c.de))}</div>`:`<div class="mid">${esc(c.en)}</div>`}${c.ex?`<div class="top" style="margin-top:14px;align-items:flex-start"><div>${esc(c.ex)}</div>${sayBtn(c.ex)}</div>${c.exen?`<p class="en" style="margin:6px 0 0">${esc(c.exen)}</p>`:''}`:''}`:`<p class="mu sm" style="margin-top:22px">Tap to reveal</p>`;
+  const L=['Again','Hard','Good','Easy'];
+  const btns=Q.show?`<div class="rate">${L.map((l,q)=>`<button class="btn${q===2?' pr':''}" onclick="rateCard(${q})">${l}<small>${ivl(sched(st,q).int)}</small></button>`).join('')}</div>`:`<button class="btn pr full" onclick="showCard()">Show answer</button>`;
+  root.innerHTML=`<div class="top"><button class="btn ghost" onclick="home()">✕</button><span class="mu sm">${left} left</span></div><div class="bar"><i style="width:${pct}%"></i></div><div class="card flash" onclick="cardTap(event)"><span class="chip">${esc(c.deck)}${st?'':' · new'}</span>${front}${back}</div>${btns}`;
 }
 function vWords(){
   if(Q)return vWordsCard();
-  const ids=Object.keys(S.cards).filter(k=>VB[k]);
-  const chips=['','Arbeit','Technik','Alltag'].map(k=>`<button class="${wd===k?'p':''}" onclick="wd='${k}';vWords()">${k||'All'}</button>`).join('');
-  const lists=['Arbeit','Technik','Alltag'].map(dk=>{const items=VOCAB.filter(r=>r[0]===dk);return `<details><summary><b>${dk}</b> (${items.length})</summary>${items.map(r=>`<div class="li"><b>${esc(r[1])}</b> – ${esc(r[2])}<button data-say="${esc(spoken(r[1]))}">🔊</button></div>`).join('')}</details>`;}).join('');
-  root.innerHTML=`<h1>🃏 Words</h1><div class="card"><div class="row">${chips}</div><p>${dueList(wd).length} due · ${newList(wd).length} new today · ${ids.length}/${VOCAB.length} started</p><button class="p" style="width:100%" onclick="startWords(wd)">Start session</button></div><div class="card"><h2>Browse all</h2>${lists}</div>`;
+  const started=Object.keys(S.cards).filter(k=>VB[k]).length,total=Object.keys(VB).length;
+  const list=DECKS().map(dk=>{
+    const items=dk==='Meine'?S.custom.map((c,i)=>({...VB['my:'+c.de],i})):Object.values(VB).filter(v=>v.deck===dk);
+    return `<details><summary>${esc(dk)} <span class="mu">(${items.length})</span></summary>${items.map(v=>`<div class="li"><div class="t"><b>${esc(v.de)}</b><div class="mu sm">${esc(v.en)}</div></div>${sayBtn(spoken(v.de))}${dk==='Meine'?`<button class="ico" onclick="delWord(${v.i})">✕</button>`:''}</div>`).join('')}</details>`;
+  }).join('');
+  root.innerHTML=`<h1>Wörter</h1><p class="mu">${started} of ${total} words started</p>
+  <div class="card"><div class="row" style="gap:6px">${['',...DECKS()].map(k=>`<span class="chip ${wd===k?'on':''}" onclick="wd='${k}';vWords()">${k||'All'}</span>`).join('')}</div><p>${dueList(wd).length} due · ${newList(wd).length} new today</p><button class="btn pr full" onclick="startWords(wd)">Start session</button></div>
+  <div class="card"><h2>＋ Add your own word</h2><p class="mu sm">Found a word in a job ad, lecture or letter? Add it here and it comes up first in your new cards.</p><input id="nde" placeholder="German, e.g. die Nut, -en"><input id="nen" placeholder="English, e.g. groove"><input id="nex" placeholder="German example (optional)"><input id="nexen" placeholder="English translation (optional)"><button class="btn full" onclick="addWord()">Add word</button></div>
+  <div class="card"><h2>Browse</h2>${list}</div>`;
 }
-function vWordsCard(){
-  if(!Q.queue.length){root.innerHTML=`<div class="card"><h1>✅ Session done!</h1><p>Come back tomorrow. Spaced repetition works because of the gaps.</p><button class="p" onclick="Q=null;go('today')">Back</button></div>`;return;}
-  const id=Q.queue[0],c=VB[id],left=Q.queue.length,pct=Math.round((1-left/Math.max(Q.total,left))*100);
-  const front=Q.rev?`<div class="mut">Say it in German, out loud!</div><div class="big">${esc(c.en)}</div>`:`<div class="big">${esc(c.de)} <button data-say="${esc(spoken(c.de))}">🔊</button></div>`;
-  const back=Q.show?`<hr>${Q.rev?`<div class="big">${esc(c.de)} <button data-say="${esc(spoken(c.de))}">🔊</button></div>`:`<div class="big" style="font-size:20px">${esc(c.en)}</div>`}<p>${esc(c.ex)} <button data-say="${esc(c.ex)}">🔊</button></p><p class="mut">Read the example aloud once.</p>`:'';
-  const btns=Q.show?`<div class="row"><button onclick="rateCard(0)">Again</button><button onclick="rateCard(1)">Hard</button><button onclick="rateCard(2)">Good</button><button onclick="rateCard(3)">Easy</button></div>`:`<button class="p" style="width:100%" onclick="showCard()">Show answer</button>`;
-  root.innerHTML=`<div class="mut">${c.deck} · ${left} left</div><div class="bar"><i style="width:${pct}%"></i></div><div class="card">${front}${back}</div>${btns}<br><button onclick="Q=null;go('words')">Quit session</button>`;
+function addWord(){
+  const g=id=>$('#'+id).value.trim(),de=g('nde'),en=g('nen');
+  if(!de||!en){alert('Please enter at least the German word and its English meaning.');return;}
+  if(S.custom.some(c=>c.de===de)){alert('You already added this word.');return;}
+  S.custom.push({de,en,ex:g('nex'),exen:g('nexen')});save();buildVB();buzz(10);vWords();
 }
+function delWord(i){if(!confirm('Delete this word?'))return;const c=S.custom.splice(i,1)[0];delete S.cards['my:'+c.de];save();buildVB();vWords();}
 
-/* ================= GRAMMAR ================= */
+/* ========== GRAMMAR ========== */
 let G=null;
 function startGram(){
-  const list=GRAM.map((q,i)=>{const g=S.gram[i];return [i,(g?g.ok-2*g.no:-0.5)+Math.random()*1.5];}).sort((a,b)=>a[1]-b[1]).slice(0,5).map(x=>x[0]);
+  const list=GRAM.map((q,i)=>{const g=S.gram[i];return[i,(g?g.ok-2*g.no:-0.5)+Math.random()*1.5];}).sort((a,b)=>a[1]-b[1]).slice(0,5).map(x=>x[0]);
   G={list,i:0,score:0};prepG();go('gram');
 }
-function prepG(){const q=GRAM[G.list[G.i]];G.opts=q.o.map((t,k)=>({t,c:k===0})).sort(()=>Math.random()-.5);G.ans=null;}
+function prepG(){const q=GRAM[G.list[G.i]];G.opts=shuffle(q.o.map((t,k)=>({t,c:k===0})));G.ans=null;}
 function ansG(k){
   if(G.ans!==null)return;G.ans=k;
-  const qi=G.list[G.i],q=GRAM[qi],g=S.gram[qi]=S.gram[qi]||{ok:0,no:0};
-  if(G.opts[k].c){g.ok++;G.score++;}else g.no++;
-  save();act('g');vGramQ();say(q.q.replace('___',q.o[0]));
+  const qi=G.list[G.i],q=GRAM[qi],g=S.gram[qi]=S.gram[qi]||{ok:0,no:0},ok=G.opts[k].c;
+  if(ok){g.ok++;G.score++;}else g.no++;
+  buzz(ok?12:[25,40,25]);save();act('g');vGramQ();say(q.q.replace('___',q.o[0]));
 }
 function nextG(){G.i++;if(G.i<G.list.length)prepG();vGramQ();}
 function vGram(){
   if(G)return vGramQ();
   let ok=0,no=0;Object.values(S.gram).forEach(g=>{ok+=g.ok;no+=g.no;});
-  root.innerHTML=`<h1>✏️ Grammar</h1><div class="card"><p>${GRAM.length} questions · Accuracy so far: ${ok+no?Math.round(100*ok/(ok+no)):'–'}%</p><p class="mut">Questions you got wrong come back more often. Read the explanation, then read the full sentence aloud.</p><button class="p" style="width:100%" onclick="startGram()">Start 5 questions</button></div>`;
+  root.innerHTML=`<h1>Grammatik</h1><p class="mu">B1 → B2 structures you need at work</p><div class="card"><p>${GRAM.length} questions · accuracy <b>${ok+no?Math.round(100*ok/(ok+no))+'%':'–'}</b></p><p class="mu sm">Questions you miss come back more often. After each answer, read the full sentence aloud.</p><button class="btn pr full" onclick="startGram()">Start 5 questions</button></div>`;
 }
 function vGramQ(){
-  if(G.i>=G.list.length){root.innerHTML=`<div class="card"><h1>Score: ${G.score}/${G.list.length}</h1><button class="p" onclick="G=null;go('today')">Back</button> <button onclick="startGram()">Again</button></div>`;return;}
+  if(G.i>=G.list.length){
+    mark('g');const s=G.score,n=G.list.length;
+    root.innerHTML=`<div class="card pop" style="text-align:center;padding:30px 20px"><div class="big">${s} / ${n}</div><h2>${s===n?'Perfekt!':s>=n-1?'Sehr gut!':s>=n/2?'Gut gemacht!':'Mistakes are where the learning happens.'}</h2><p class="mu">Questions you missed will come back sooner.</p>${finishBtn()}<button class="btn ghost full" onclick="startGram()">Another 5</button></div>`;return;
+  }
   const q=GRAM[G.list[G.i]],a=G.ans!==null;
-  const sentence=esc(q.q).replace('___',a?`<b class="g">${esc(q.o[0])}</b>`:'<b>_____</b>');
-  root.innerHTML=`<div class="mut">Question ${G.i+1}/${G.list.length}</div><div class="bar"><i style="width:${G.i/G.list.length*100}%"></i></div><div class="card"><div class="big" style="font-size:20px">${sentence}</div>${G.opts.map((o,k)=>`<button class="opt ${a?(o.c?'ok':(G.ans===k?'no':'')):''}" onclick="ansG(${k})">${esc(o.t)}</button>`).join('')}${a?`<p class="mut">💡 ${esc(q.e)}</p><button class="p" style="width:100%" onclick="nextG()">Next</button>`:''}</div>`;
+  const sent=esc(q.q).replace('___',a?`<span class="g">${esc(q.o[0])}</span>`:'<span style="display:inline-block;width:70px;border-bottom:2px solid var(--pr)"></span>');
+  root.innerHTML=`<div class="top"><button class="btn ghost" onclick="home()">✕</button><span class="mu sm">${G.i+1} / ${G.list.length}</span></div><div class="bar"><i style="width:${(G.i+(a?1:0))/G.list.length*100}%"></i></div>
+  <div class="card"><div class="mid" style="margin:6px 0 14px">${sent}</div>${G.opts.map((o,k)=>{const cls=a?(o.c?'ok':G.ans===k?'no':''):'';const mk=a?(o.c?'✓':G.ans===k?'✗':''):'';return `<button class="btn opt ${cls}" onclick="ansG(${k})"><span style="width:16px;font-weight:700">${mk}</span>${esc(o.t)}</button>`;}).join('')}
+  ${a?`<div class="hr"></div><p style="margin:0 0 6px">💡 ${esc(q.e)}</p><button class="btn pr full" onclick="nextG()">Next</button>`:''}</div>`;
 }
 
-/* ================= SPEAKING ================= */
+/* ========== SPEAKING ========== */
 let SP=null,rec=null,chunks=[];
 function nextSp(){let best=0,bc=1e9;SPEAK.forEach((s,i)=>{const c=S.sp[i]||0;if(c<bc){bc=c;best=i;}});return best;}
 function vSpeak(){
   if(SP!==null)return vSpeakDetail();
-  root.innerHTML=`<h1>🎙 Speaking</h1><p class="mut">Pick a situation. You speak first, then compare.</p>`+SPEAK.map((s,i)=>`<div class="card" onclick="SP=${i};vSpeak()"><b>${esc(s.t)}</b><div class="mut">practiced ${S.sp[i]||0}×</div></div>`).join('');
+  root.innerHTML=`<h1>Sprechen</h1><p class="mu">You speak first, then compare. That's how understanding turns into speaking.</p>`+SPEAK.map((s,i)=>`<div class="card task" style="border:1px solid var(--ln)" onclick="SP=${i};vSpeak()"><div class="chk ${S.sp[i]?'done':''}">${S.sp[i]?'✓':''}</div><div class="t"><b>${esc(s.t)}</b><div class="mu sm">practised ${S.sp[i]||0}×</div></div><span class="mu">›</span></div>`).join('');
 }
 function vSpeakDetail(){
   const s=SPEAK[SP];
-  root.innerHTML=`<button onclick="SP=null;vSpeak()">← Back</button>
-  <div class="card"><h2>${esc(s.t)}</h2><p>${esc(s.sit)}</p><p class="mut"><b>Step 1.</b> Say your answer aloud in German, 20–30 seconds, even if imperfect. Use your own words.</p><button id="recbtn" onclick="toggleRec()">🎙 Record myself</button><audio id="myrec" controls style="display:none;width:100%;margin-top:8px"></audio></div>
-  <div class="card"><p class="mut"><b>Step 2.</b> Show the model answer and listen. What did you miss?</p><div id="model"></div><button id="revbtn" onclick="revModel()">Show model answer</button></div>
-  <div class="card"><p class="mut"><b>Step 3. Shadowing:</b> play the model and speak <i>along</i> with it, 3 times. Then record yourself again.</p><button class="p" style="width:100%" onclick="doneSpeak()">✅ I practiced this</button></div>`;
+  root.innerHTML=`<button class="btn ghost" onclick="SP=null;vSpeak()">← All scenarios</button>
+  <div class="card"><h2>${esc(s.t)}</h2><p>${esc(s.sit)}</p></div>
+  <div class="card"><div class="mu sm">STEP 1</div><p>Answer out loud in German for 20–30 seconds. Imperfect is fine.</p><button class="btn full" id="recbtn" onclick="toggleRec()">🎙 Record myself</button><audio id="myrec" controls style="display:none;width:100%;margin-top:10px"></audio></div>
+  <div class="card"><div class="mu sm">STEP 2</div><p>Compare with the model. What did you miss?</p><div id="model"></div><button class="btn full" id="revbtn" onclick="revModel()">Show model answer</button></div>
+  <div class="card"><div class="mu sm">STEP 3 · SHADOWING</div><p>Play the model and speak <i>along with it</i> three times. Then record yourself again.</p><button class="btn pr full" onclick="doneSpeak()">✓ I practised this</button></div>`;
 }
 function revModel(){
   const s=SPEAK[SP];
-  $('#model').innerHTML=`<p style="font-size:18px">${esc(s.model)}</p><div class="row"><button data-say="${esc(s.model)}">🔊 Normal</button><button data-say="${esc(s.model)}" data-slow="1">🐢 Slow</button></div><p class="mut"><b>Useful chunks:</b><br>${s.tips.map(t=>'• '+esc(t)).join('<br>')}</p>`;
+  $('#model').innerHTML=`<p class="mid" style="font-weight:500">${esc(s.model)}</p><p class="en">${esc(s.en||'')}</p><div class="row" style="align-items:center">${sayBtn(s.model)}${sayBtn(s.model,true)}<span class="mu sm">normal · slow</span></div><div class="hr"></div><div class="mu sm">USEFUL CHUNKS</div>${s.tips.map(t=>`<div style="margin:6px 0">• ${esc(t)}</div>`).join('')}`;
   $('#revbtn').style.display='none';
 }
 async function toggleRec(){
@@ -323,68 +309,71 @@ async function toggleRec(){
     rec=new MediaRecorder(st);chunks=[];
     rec.ondataavailable=e=>chunks.push(e.data);
     rec.onstop=()=>{st.getTracks().forEach(t=>t.stop());const a=$('#myrec');if(a){a.src=URL.createObjectURL(new Blob(chunks,{type:rec.mimeType}));a.style.display='block';}};
-    rec.start();btn.textContent='⏹ Stop';
-  }catch(e){alert('Microphone not available: '+e.message+'\nYou can still practice by speaking aloud without recording.');}
+    rec.start();btn.textContent='⏹ Stop recording';
+  }catch(e){alert('Microphone not available. You can still practise by speaking aloud.');}
 }
-function doneSpeak(){act('s');S.sp[SP]=(S.sp[SP]||0)+1;save();SP=null;go('today');}
+function doneSpeak(){act('s');mark('s');S.sp[SP]=(S.sp[SP]||0)+1;save();buzz(12);SP=null;if(flowOn)nextInFlow();else go('today');}
 
-/* ================= DICTATION ================= */
+/* ========== DICTATION ========== */
 let D=null;
 const norm=w=>w.toLowerCase().replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue').replace(/ß/g,'ss').replace(/[^a-z0-9]/g,'');
-function startDict(){const ids=Object.keys(VB).sort(()=>Math.random()-.5).slice(0,3);D={list:ids.map(i=>VB[i].ex),i:0,res:null,typed:''};go('dict');setTimeout(()=>say(D.list[0]),300);}
+function startDict(){D={list:shuffle(Object.values(VB).filter(v=>v.ex)).slice(0,3),i:0,res:null,typed:''};go('dict');setTimeout(()=>say(D.list[0].ex),350);}
 function checkDict(){
   const typed=$('#dt').value;D.typed=typed;
-  const set=new Set(typed.trim().split(/\s+/).map(norm)),words=D.list[D.i].split(/\s+/);
-  let ok=0;
-  const html=words.map(w=>{const good=set.has(norm(w));if(good)ok++;return `<span class="${good?'g':'r'}">${esc(w)}</span>`;}).join(' ');
-  D.res=`${html}<br><span class="mut">${ok}/${words.length} words found</span>`;
-  act('h');vDict();
+  const v=D.list[D.i],set=new Set(typed.trim().split(/\s+/).map(norm)),words=v.ex.split(/\s+/);
+  let ok=0;const html=words.map(w=>{const g=set.has(norm(w));if(g)ok++;return `<span class="${g?'g':'r'}">${esc(w)}</span>`;}).join(' ');
+  D.res=`<p class="mid" style="font-weight:500">${html}</p>${v.exen?`<p class="en">${esc(v.exen)}</p>`:''}<p class="mu sm">${ok}/${words.length} words · dotted = missed</p>`;
+  buzz(ok===words.length?12:[20,30,20]);act('h');vDict();
 }
-function nextDict(){D.i++;D.res=null;D.typed='';vDict();if(D.i<D.list.length)say(D.list[D.i]);}
+function nextDict(){D.i++;D.res=null;D.typed='';vDict();if(D.i<D.list.length)say(D.list[D.i].ex);}
 function vDict(){
-  if(!D)return go('today');
-  if(D.i>=D.list.length){root.innerHTML=`<div class="card"><h1>✅ Dictation done</h1><button class="p" onclick="D=null;go('today')">Back</button></div>`;return;}
-  const s=D.list[D.i];
-  root.innerHTML=`<h2>👂 Dictation ${D.i+1}/${D.list.length}</h2><div class="card"><div class="row"><button data-say="${esc(s)}">🔊 Play</button><button data-say="${esc(s)}" data-slow="1">🐢 Slow</button></div><p class="mut">Type what you hear. Umlauts optional (ae = ä).</p><textarea id="dt" rows="2">${esc(D.typed)}</textarea>${D.res?`<p>${D.res}</p><button class="p" style="width:100%" onclick="nextDict()">Next</button>`:`<button class="p" style="width:100%" onclick="checkDict()">Check</button>`}</div><button onclick="D=null;go('today')">Quit</button>`;
+  if(!D)return home();
+  if(D.i>=D.list.length){mark('h');root.innerHTML=`<div class="card pop" style="text-align:center;padding:30px 20px"><div style="font-size:48px">👂</div><h1>Listening done</h1>${finishBtn()}</div>`;return;}
+  const s=D.list[D.i].ex;
+  root.innerHTML=`<div class="top"><button class="btn ghost" onclick="home()">✕</button><span class="mu sm">Dictation ${D.i+1} / ${D.list.length}</span></div><div class="bar"><i style="width:${D.i/D.list.length*100}%"></i></div>
+  <div class="card"><div class="row" style="align-items:center">${sayBtn(s)}${sayBtn(s,true)}<span class="mu sm">play · slow</span></div><p class="mu sm">Type what you hear. Umlauts optional (ae = ä).</p><textarea id="dt" rows="3" autocapitalize="off">${esc(D.typed)}</textarea>${D.res?D.res+`<button class="btn pr full" onclick="nextDict()">Next</button>`:`<button class="btn pr full" onclick="checkDict()">Check</button>`}</div>`;
 }
 
-/* ================= PLACEMENT TEST ================= */
+/* ========== PLACEMENT ========== */
 let PT=null;
-function prepP(){const q=PLACE[PT.i];PT.opts=q.o.map((t,k)=>({t,c:k===0})).sort(()=>Math.random()-.5);PT.opts.push({t:"I don't know",c:false});}
+function prepP(){const q=PLACE[PT.i];PT.opts=shuffle(q.o.map((t,k)=>({t,c:k===0})));PT.opts.push({t:"I don't know",c:false});}
 function startPlace(){PT={i:0,sc:{},tot:{}};PLACE.forEach(q=>{PT.tot[q.l]=(PT.tot[q.l]||0)+1;PT.sc[q.l]=0;});prepP();go('place');}
 function ansP(k){
   if(PT.opts[k].c)PT.sc[PLACE[PT.i].l]++;
   PT.i++;
-  if(PT.i>=PLACE.length){
-    let est='below A2';
-    for(const l of ['A2','B1','B2','C1']){if(PT.sc[l]/PT.tot[l]>=0.6)est=l;else break;}
-    S.place={est,sc:PT.sc,tot:PT.tot,date:new Date().toLocaleDateString()};save();
-  }else prepP();
+  if(PT.i>=PLACE.length){let est='below A2';for(const l of ['A2','B1','B2','C1']){if(PT.sc[l]/PT.tot[l]>=0.6)est=l;else break;}S.place={est,sc:PT.sc,tot:PT.tot,date:new Date().toLocaleDateString('de-DE')};save();}
+  else prepP();
   vPlace();
 }
 function vPlace(){
   if(!PT)return go('more');
   if(PT.i>=PLACE.length){
-    const p=S.place,adv={'below A2':'Start with core B1 basics: cases, word order, Perfekt.','A2':'Build B1 basics: Nebensätze, Perfekt/Präteritum, Dativ/Akkusativ.','B1':'Solid base. Next: Konjunktiv II, Passiv, Relativsätze, connectors.','B2':'Good. Work on fluency and speed, Nominalisierung and formal register.','C1':'Strong. Focus on speaking fluency and job-specific vocabulary.'}[p.est];
-    root.innerHTML=`<div class="card"><h1>Estimated level: ${p.est}</h1><p>${['A2','B1','B2','C1'].map(l=>`${l}: ${p.sc[l]}/${p.tot[l]}`).join(' · ')}</p><p>${adv}</p><p class="mut">This is a rough grammar-only estimate, not an official result. Speaking and listening may differ.</p><button class="p" onclick="PT=null;go('today')">Done</button></div>`;return;
+    const p=S.place,adv={'below A2':'Start with core basics: cases, word order, Perfekt.','A2':'Build B1 basics: Nebensätze, Perfekt/Präteritum, Dativ/Akkusativ.','B1':'Solid base. Next: Konjunktiv II, Passiv, Relativsätze, connectors.','B2':'Good. Work on fluency, Nominalisierung and formal register.','C1':'Strong. Focus on speaking fluency and job-specific vocabulary.'}[p.est];
+    root.innerHTML=`<div class="card pop" style="text-align:center;padding:30px 20px"><div class="mu sm">ESTIMATED LEVEL</div><div class="big" style="font-size:44px">${p.est}</div><p class="mu">${['A2','B1','B2','C1'].map(l=>`${l} ${p.sc[l]}/${p.tot[l]}`).join(' · ')}</p><p>${adv}</p><p class="mu sm">A rough grammar-only estimate, not an official result.</p><button class="btn pr full" onclick="home()">Done</button></div>`;return;
   }
   const q=PLACE[PT.i];
-  root.innerHTML=`<div class="mut">Question ${PT.i+1}/${PLACE.length}</div><div class="bar"><i style="width:${PT.i/PLACE.length*100}%"></i></div><div class="card"><div class="big" style="font-size:20px">${esc(q.q).replace('___','_____')}</div>${PT.opts.map((o,k)=>`<button class="opt" onclick="ansP(${k})">${esc(o.t)}</button>`).join('')}</div><button onclick="if(confirm('Quit test?')){PT=null;go('more')}">Quit</button>`;
+  root.innerHTML=`<div class="top"><button class="btn ghost" onclick="if(confirm('Quit the test?')){PT=null;go('more')}">✕</button><span class="mu sm">${PT.i+1} / ${PLACE.length}</span></div><div class="bar"><i style="width:${PT.i/PLACE.length*100}%"></i></div><div class="card"><div class="mid" style="margin:6px 0 14px">${esc(q.q).replace('___','_____')}</div>${PT.opts.map((o,k)=>`<button class="btn opt" onclick="ansP(${k})">${esc(o.t)}</button>`).join('')}</div>`;
 }
 
-/* ================= MORE ================= */
+/* ========== MORE ========== */
 function vMore(){
   const ids=Object.keys(S.cards).filter(k=>VB[k]),mature=ids.filter(k=>S.cards[k].int>=21).length;
   let ok=0,no=0;Object.values(S.gram).forEach(g=>{ok+=g.ok;no+=g.no;});
-  const active=Object.keys(S.days).length;
-  root.innerHTML=`<h1>📊 Progress</h1><div class="card"><p>🔥 Streak: <b>${streak()}</b> days · Active days: <b>${active}</b></p><p>🃏 Words started: <b>${ids.length}</b>/${VOCAB.length} · Mature (21+ days): <b>${mature}</b></p><p>✏️ Grammar accuracy: <b>${ok+no?Math.round(100*ok/(ok+no)):'–'}%</b> (${ok+no} answers)</p><p>🎙 Speaking sessions: <b>${Object.values(S.sp).reduce((a,b)=>a+b,0)}</b></p><p>📋 Placement: <b>${S.place?S.place.est+' ('+S.place.date+')':'not taken'}</b></p><button onclick="startPlace()">Take / retake placement test</button></div>
-  <div class="card"><h2>Backup</h2><p class="mut">Progress is stored on this phone. Export a backup now and then.</p><div class="row"><button onclick="exportData()">⬇ Export</button><button onclick="$('#imp').click()">⬆ Import</button></div><input type="file" id="imp" accept=".json" style="display:none" onchange="importData(this)"><br><button onclick="if(confirm('Delete ALL progress?')){localStorage.removeItem('dfi');location.reload()}">Reset everything</button></div>
-  <div class="card mut"><h2>🔊 No German voice?</h2>Android: Settings → search “Text-to-speech” → Google Speech Services (or Speech Recognition &amp; Synthesis) → Settings → Install voice data → Deutsch. Then restart the app.</div>`;
+  const active=Object.keys(S.days).filter(d=>hasAct(+d)).length,t=dayNum();
+  let cells='';for(let d=t-83;d<=t;d++){let l=['w','g','s','h'].filter(k=>isDone(k,d)).length;if(!l&&hasAct(d))l=1;cells+=`<i class="l${l}"></i>`;}
+  const total=Object.keys(VB).length,unseen=total-ids.length;
+  root.innerHTML=`<h1>Fortschritt</h1>
+  <div class="card"><h2>Last 12 weeks</h2><div class="heat">${cells}</div><p class="mu sm">Darker = more of the daily plan done. 🔥 ${streak()}-day streak · ${active} active days</p></div>
+  <div class="card"><div class="stat">🃏 <b>${ids.length}</b> / ${total} words started · <b>${mature}</b> long-term (21+ days)</div><div class="stat">✏️ Grammar accuracy <b>${ok+no?Math.round(100*ok/(ok+no))+'%':'–'}</b> <span class="mu sm">(${ok+no} answers)</span></div><div class="stat">🎙 <b>${Object.values(S.sp).reduce((a,b)=>a+b,0)}</b> speaking sessions</div><div class="stat">📋 Placement: <b>${S.place?S.place.est:'not taken'}</b> <span class="mu sm">${S.place?S.place.date:''}</span></div><button class="btn full" onclick="startPlace()">Take / retake placement test</button></div>
+  <div class="card"><h2>Content</h2><p class="mu">${VOCAB.length} built-in words + ${S.custom.length} of yours · ${GRAM.length} grammar questions · ${SPEAK.length} speaking scenarios.${unseen?` At your pace, the remaining ${unseen} new words take about ${Math.ceil(unseen/(S.nl||8))} days.`:' All words seen. Time for a new content pack!'}</p><div class="mu sm">NEW WORDS PER DAY</div><div class="row" style="gap:6px;margin-top:8px">${[5,8,12,15].map(n=>`<span class="chip ${(S.nl||8)===n?'on':''}" onclick="S.nl=${n};save();vMore()">${n}</span>`).join('')}</div></div>
+  <div class="card"><h2>Appearance</h2><div class="row" style="gap:6px">${[['auto','Auto'],['light','Light'],['dark','Dark']].map(([k,l])=>`<span class="chip ${S.theme===k?'on':''}" onclick="setTheme('${k}')">${l}</span>`).join('')}</div></div>
+  <div class="card"><h2>Backup</h2><p class="mu sm">Progress is stored only on this phone. Export a backup now and then.</p><div class="row"><button class="btn" onclick="exportData()">⬇ Export</button><button class="btn" onclick="$('#imp').click()">⬆ Import</button></div><input type="file" id="imp" accept=".json" style="display:none" onchange="importData(this)"><button class="btn ghost full" onclick="if(confirm('Delete ALL progress?')){localStorage.removeItem('dfi');location.reload()}">Reset everything</button></div>
+  <div class="card"><h2>🔊 No German voice?</h2><p class="mu sm">Android Settings → search "Text-to-speech" → Google Speech Services → Settings → Install voice data → Deutsch. Then restart the app.</p></div>`;
 }
-function exportData(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'}));a.download='deutsch-progress.json';a.click();}
-function importData(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{S=Object.assign(S,JSON.parse(r.result));save();alert('Imported!');render();}catch(e){alert('Invalid file');}};r.readAsText(f);}
+function exportData(){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(S)],{type:'application/json'}));a.download='deutsch-progress-'+new Date().toISOString().slice(0,10)+'.json';a.click();}
+function importData(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{try{S=Object.assign(S,JSON.parse(r.result));save();buildVB();applyTheme();alert('Imported!');render();}catch(e){alert('Invalid file');}};r.readAsText(f);}
 
-render();
+applyTheme();render();
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 </script>
 </body>
